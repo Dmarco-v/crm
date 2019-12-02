@@ -14,6 +14,6 @@
 
 - MyBatis
 
-- 前端使用BootStrap框架
+- Bootstrap前端框架
 
   
