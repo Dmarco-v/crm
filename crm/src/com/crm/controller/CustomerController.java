@@ -19,7 +19,6 @@ import com.crm.service.CustomerService;
 import com.crm.utils.Page;
 
 /**
- * ¿Í»§ÇëÇó´¦Àí
  * @author dmarco
  *
  */
@@ -33,7 +32,7 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 	
-	//Ê¹ÓÃ@Value×¢½âÌí¼ÓÊôÐÔ
+	//Ê¹ï¿½ï¿½@Value×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@Value("${customer_from_type}")
 	private String customer_from_type;
 	@Value("${customer_industry_type}")
@@ -45,7 +44,7 @@ public class CustomerController {
 	@RequestMapping("list")
 	public String list(Model model,QueryVo vo){
 		
-		//½â¾ögetÇëÇóÂÒÂëÎÊÌâ
+		//ï¿½ï¿½ï¿½getï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		try {
 			if(!StringUtils.isEmpty(vo.getCustName())){
 				vo.setCustName(new String(vo.getCustName().getBytes("ISO-8859-1"),"utf-8"));
@@ -55,26 +54,26 @@ public class CustomerController {
 			e.printStackTrace();
 		}
 		
-		//²éÑ¯À´Ô´
+		//ï¿½ï¿½Ñ¯ï¿½ï¿½Ô´
 		List <BaseDict> fromType=baseDictService.getBaseDictByCode(customer_from_type);
-		//²éÑ¯ÐÐÒµ
+		//ï¿½ï¿½Ñ¯ï¿½ï¿½Òµ
 		List <BaseDict> industryType=baseDictService.getBaseDictByCode(customer_industry_type);
-		//²éÑ¯¼¶±ð
+		//ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 		List <BaseDict> levelType=baseDictService.getBaseDictByCode(customer_level_type);
 		
 		
-		//ÉèÖÃÊý¾ÝÄ£ÐÍµÄ·µ»Ø
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ÍµÄ·ï¿½ï¿½ï¿½
 		model.addAttribute("fromType", fromType);
 		model.addAttribute("industryType", industryType);
 		model.addAttribute("levelType", levelType);
 		
-		//¸ù¾Ý²éÑ¯Ìõ¼þ²éÑ¯¿Í»§ÁÐ±í
+		//ï¿½ï¿½ï¿½Ý²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½Í»ï¿½ï¿½Ð±ï¿½
 		Page<Customer> page=customerService.getCustomerByQueryVo(vo);
 				
-		//ÉèÖÃ·ÖÒ³Êý·µ»Ø
+		//ï¿½ï¿½ï¿½Ã·ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		model.addAttribute(page);
 		
-		//Êý¾Ý»ØÏÔ
+		//ï¿½ï¿½ï¿½Ý»ï¿½ï¿½ï¿½
 		model.addAttribute("custName",vo.getCustName());
 		model.addAttribute("custSource",vo.getCustSource());
 		model.addAttribute("custIndustry",vo.getCustIndustry());
